@@ -169,7 +169,6 @@ else:
         total_products = filtered_df["Product Name"].nunique()
     else:
         total_products = 0
-
     # ---------------- DASHBOARD ----------------
     if page == "🏠 Dashboard":
 
