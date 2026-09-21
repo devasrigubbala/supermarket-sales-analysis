@@ -213,7 +213,7 @@ else:
 
         # -------- QUICK ANALYSIS --------
         st.info(
-    f"🔎 Showing {len(filtered_df):,} records"
+   f"🔎 Showing {len(df):,} records"
 )
                 # -------- SEARCH & FILTER --------
 
