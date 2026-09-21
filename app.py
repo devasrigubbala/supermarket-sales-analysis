@@ -240,12 +240,7 @@ else:
         st.info(
             f"🔎 Showing {len(df):,} records"
         )
-filtered_df = df.copy()
-if search_product:
-    filtered_df = filtered_df[
-        filtered_df["Product Name"].astype(str).str.contains(
-            search_product, case=False, na=False
-        )
+
     ]
         
     # -------- QUICK ANALYSIS --------
