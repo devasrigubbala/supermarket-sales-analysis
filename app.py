@@ -290,7 +290,8 @@ else:
             ]
 
         st.info(
-            f"🔎 Showing {len(filtered_df):,} records"
+    f"🔎 Showing {len(df):,} records"
+)
         )
 
         col1, col2 = st.columns(2)
