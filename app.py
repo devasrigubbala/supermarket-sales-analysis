@@ -241,7 +241,6 @@ else:
             f"🔎 Showing {len(df):,} records"
         )
 
-    ]
         
     # -------- QUICK ANALYSIS --------
 
