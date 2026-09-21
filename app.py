@@ -210,26 +210,41 @@ else:
                 <div class="card-value">{total_products:,}</div>
             </div>
             """, unsafe_allow_html=True)
-
-        # -------- QUICK ANALYSIS --------
-             # Filtered record count
-        if search_product:
-            display_df = df[
-                df["Product Name"]
-                .astype(str)
-                .str.contains(search_product, case=False, na=False)
-            ]
-        else:
-            display_df = df.copy()
-
-        st.info(
-            f"🔎 Showing {len(display_df):,} records"
-        )
-                # -------- SEARCH & FILTER --------
+        # -------- SEARCH & FILTER --------
 
         st.markdown(
             '<div class="section-title">🔎 Search & Filter</div>',
             unsafe_allow_html=True
+        )
+
+        filter_col1, filter_col2, filter_col3 = st.columns(3)
+
+        with filter_col1:
+            search_product = st.text_input(
+                "🔍 Search Product",
+                placeholder="Type product name..."
+            )
+
+        with filter_col2:
+            selected_category = st.selectbox(
+                "📦 Category",
+                ["All"] + sorted(df["Category"].dropna().unique().tolist())
+            )
+
+        with filter_col3:
+            selected_region = st.selectbox(
+                "🌎 Region",
+                ["All"] + sorted(df["Region"].dropna().unique().tolist())
+            )
+
+        st.info(
+            f"🔎 Showing {len(df):,} records"
+        )
+
+        # -------- QUICK ANALYSIS --------
+
+        col1, col2 = st.columns(2)
+    
         )
 
         filter_col1, filter_col2, filter_col3 = st.columns(3)
