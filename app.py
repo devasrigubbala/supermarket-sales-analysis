@@ -216,6 +216,61 @@ else:
             """, unsafe_allow_html=True)
 
         # -------- QUICK ANALYSIS --------
+                # -------- SEARCH & FILTER --------
+
+        st.markdown(
+            '<div class="section-title">🔎 Search & Filter</div>',
+            unsafe_allow_html=True
+        )
+
+        filter_col1, filter_col2, filter_col3 = st.columns(3)
+
+        with filter_col1:
+            search_product = st.text_input(
+                "🔍 Search Product",
+                placeholder="Type product name..."
+            )
+
+        with filter_col2:
+            if "Category" in df.columns:
+                selected_category = st.selectbox(
+                    "📦 Category",
+                    ["All"] + sorted(df["Category"].dropna().unique().tolist())
+                )
+            else:
+                selected_category = "All"
+
+        with filter_col3:
+            if "Region" in df.columns:
+                selected_region = st.selectbox(
+                    "🌎 Region",
+                    ["All"] + sorted(df["Region"].dropna().unique().tolist())
+                )
+            else:
+                selected_region = "All"
+
+        filtered_df = df.copy()
+
+        if search_product:
+            filtered_df = filtered_df[
+                filtered_df["Product Name"]
+                .astype(str)
+                .str.contains(search_product, case=False, na=False)
+            ]
+
+        if selected_category != "All":
+            filtered_df = filtered_df[
+                filtered_df["Category"] == selected_category
+            ]
+
+        if selected_region != "All":
+            filtered_df = filtered_df[
+                filtered_df["Region"] == selected_region
+            ]
+
+        st.info(
+            f"🔎 Showing {len(filtered_df):,} records"
+        )
 
         col1, col2 = st.columns(2)
 
