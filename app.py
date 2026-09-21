@@ -245,23 +245,6 @@ else:
 
         col1, col2 = st.columns(2)
     
-        with filter_col2:
-            if "Category" in df.columns:
-                selected_category = st.selectbox(
-                    "📦 Category",
-                    ["All"] + sorted(df["Category"].dropna().unique().tolist())
-                )
-            else:
-                selected_category = "All"
-
-        with filter_col3:
-            if "Region" in df.columns:
-                selected_region = st.selectbox(
-                    "🌎 Region",
-                    ["All"] + sorted(df["Region"].dropna().unique().tolist())
-                )
-            else:
-                selected_region = "All"
         # -------- DATE FILTER --------
 
         if "Order Date" in df.columns:
