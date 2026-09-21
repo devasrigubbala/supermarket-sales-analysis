@@ -157,19 +157,19 @@ else:
     st.success("✅ CSV file loaded successfully!")
 
     # ---------------- KPI CALCULATIONS ----------------
-    total_sales = df["Sales"].sum()
+       total_sales = filtered_df["Sales"].sum()
 
-    average_sales = df["Sales"].mean()
+    average_sales = filtered_df["Sales"].mean()
 
     total_orders = (
-        df["Order ID"].nunique()
-        if "Order ID" in df.columns
-        else len(df)
+        filtered_df["Order ID"].nunique()
+        if "Order ID" in filtered_df.columns
+        else len(filtered_df)
     )
 
     total_products = (
-        df["Product Name"].nunique()
-        if "Product Name" in df.columns
+        filtered_df["Product Name"].nunique()
+        if "Product Name" in filtered_df.columns
         else 0
     )
 
