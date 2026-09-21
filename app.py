@@ -248,10 +248,7 @@ if search_product:
             search_product, case=False, na=False
         )
     ]
-        filtered_df["Product Name"].astype(str).str.contains(
-            search_product, case=False, na=False
-        )
-    ]
+        
     # -------- QUICK ANALYSIS --------
 
     col1, col2 = st.columns(2)
