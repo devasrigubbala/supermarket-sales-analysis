@@ -279,6 +279,10 @@ else:
     "Category",
     ["All"] + sorted(df["Category"].dropna().unique().tolist())
 )
+   selected_region = st.selectbox(
+    "Region",
+    ["All"] + sorted(df["Region"].dropna().unique().tolist())
+) 
     filtered_df = df.copy()
 
     if "Order Date" in filtered_df.columns:
@@ -298,7 +302,6 @@ else:
         filtered_df = filtered_df[
             filtered_df["Category"] == selected_category
         ]
-
     if selected_region != "All":
         filtered_df = filtered_df[
             filtered_df["Region"] == selected_region
