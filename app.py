@@ -248,12 +248,13 @@ if search_product:
             search_product, case=False, na=False
         )
     ]
-       # -------- QUICK ANALYSIS --------
+      # -------- QUICK ANALYSIS --------
 
 col1, col2 = st.columns(2)
-        # -------- DATE FILTER --------
 
-        if "Order Date" in df.columns:
+# -------- DATE FILTER --------
+
+if "Order Date" in df.columns:
 
             date_col1, date_col2 = st.columns(2)
 
