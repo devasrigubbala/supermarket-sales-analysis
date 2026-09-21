@@ -274,7 +274,7 @@ else:
                 "📅 End Date",
                 value=df["Order Date"].max().date()
             )
-
+    search_product = st.text_input("🔎 Search Product")
     filtered_df = df.copy()
 
     if "Order Date" in filtered_df.columns:
