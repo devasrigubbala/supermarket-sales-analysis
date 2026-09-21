@@ -322,15 +322,14 @@ if search_product:
                 kind="bar",
                 ax=ax
             )
-    
-                ax.set_ylabel("Sales")
-                ax.set_xlabel("Category")
-                ax.set_title("Sales by Category")
+            ax.set_ylabel("Sales")
+            ax.set_xlabel("Category")
+            ax.set_title("Sales by Category")
 
-                plt.xticks(rotation=0)
+            plt.xticks(rotation=0)
 
-                st.pyplot(fig)
-
+            st.pyplot(fig)
+               
         if "Region" in df.columns:
 
             region_sales = (
