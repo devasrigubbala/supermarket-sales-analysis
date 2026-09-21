@@ -266,7 +266,6 @@ else:
                     value=df["Order Date"].max().date()
                 )
         filtered_df = df.copy()
-filtered_df = df.copy()
 # Apply Date Filter
 if "Order Date" in filtered_df.columns:
     filtered_df = filtered_df[
