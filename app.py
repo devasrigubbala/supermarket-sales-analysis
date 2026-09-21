@@ -265,13 +265,14 @@ else:
                     "📅 End Date",
                     value=df["Order Date"].max().date()
                 )
-        filtered_df = df.copy()
-# Apply Date Filter
-if "Order Date" in filtered_df.columns:
-    filtered_df = filtered_df[
-        (filtered_df["Order Date"].dt.date >= start_date) &
-        (filtered_df["Order Date"].dt.date <= end_date)
-    ]
+            filtered_df = df.copy()
+
+        # Apply Date Filter
+        if "Order Date" in filtered_df.columns:
+            filtered_df = filtered_df[
+                (filtered_df["Order Date"].dt.date >= start_date) &
+                (filtered_df["Order Date"].dt.date <= end_date)
+            ]   
         if search_product:
             filtered_df = filtered_df[
                 filtered_df["Product Name"]
