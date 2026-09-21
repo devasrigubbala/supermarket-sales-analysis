@@ -240,7 +240,18 @@ else:
         st.info(
             f"🔎 Showing {len(df):,} records"
         )
+        display_df = df.copy()
 
+        if search_product:
+            display_df = display_df[
+                display_df["Product Name"]
+                .astype(str)
+                .str.contains(search_product, case=False, na=False)
+            ]
+
+        st.info(
+            f"🔎 Showing {len(display_df):,} records"
+        )
         
     # -------- QUICK ANALYSIS --------
 
