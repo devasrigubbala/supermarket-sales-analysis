@@ -160,25 +160,15 @@ else:
     total_sales = df["Sales"].sum()
     average_sales = df["Sales"].mean()
 
-    total_orders = (
-        df["Order ID"].nunique()
-        if "Order ID" in df.columns
-        else len(df)
-    )
+    if "Order ID" in df.columns:
+        total_orders = df["Order ID"].nunique()
+    else:
+        total_orders = len(df)
 
-    total_products = (
-        df["Product Name"].nunique()
-        if "Product Name" in df.columns
-        else 0
-    )   
-        df["Product Name"].nunique()
-        if "Product Name" in df.columns
-        else 0
-    )
-        filtered_df["Product Name"].nunique()
-        if "Product Name" in filtered_df.columns
-        else 0
-    )
+    if "Product Name" in df.columns:
+        total_products = df["Product Name"].nunique()
+    else:
+        total_products = 0
 
     # ---------------- DASHBOARD ----------------
     if page == "🏠 Dashboard":
