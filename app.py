@@ -212,6 +212,9 @@ else:
             """, unsafe_allow_html=True)
 
         # -------- QUICK ANALYSIS --------
+        st.info(
+    f"🔎 Showing {len(filtered_df):,} records"
+)
                 # -------- SEARCH & FILTER --------
 
         st.markdown(
