@@ -212,9 +212,19 @@ else:
             """, unsafe_allow_html=True)
 
         # -------- QUICK ANALYSIS --------
+        # Filtered record count
+        if search_product:
+            display_df = df[
+                df["Product Name"]
+                .astype(str)
+                .str.contains(search_product, case=False, na=False)
+            ]
+        else:
+            display_df = df.copy()
+
         st.info(
-   f"🔎 Showing {len(df):,} records"
-)
+            f"🔎 Showing {len(display_df):,} records"
+        )
                 # -------- SEARCH & FILTER --------
 
         st.markdown(
