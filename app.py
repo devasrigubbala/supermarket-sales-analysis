@@ -171,7 +171,11 @@ else:
         total_products = 0
     # ---------------- DASHBOARD ----------------
     if page == "🏠 Dashboard":
-
+        # Use filtered data for KPI cards
+        total_sales = display_df["Sales"].sum()
+        average_sales = display_df["Sales"].mean()
+        total_orders = display_df["Order ID"].nunique()
+        total_products = display_df["Product Name"].nunique()
         st.markdown(
             '<div class="section-title">📊 Business Overview</div>',
             unsafe_allow_html=True
