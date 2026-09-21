@@ -241,7 +241,6 @@ else:
             f"🔎 Showing {len(df):,} records"
         )
 filtered_df = df.copy()
-
 if search_product:
     filtered_df = filtered_df[
         filtered_df["Product Name"].astype(str).str.contains(
