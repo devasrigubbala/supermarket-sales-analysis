@@ -274,15 +274,18 @@ else:
                 "📅 End Date",
                 value=df["Order Date"].max().date()
             )
-    search_product = st.text_input("🔎 Search Product")
+       search_product = st.text_input("🔎 Search Product")
+
     selected_category = st.selectbox(
-    "Category",
-    ["All"] + sorted(df["Category"].dropna().unique().tolist())
-)
-   selected_region = st.selectbox(
-    "Region",
-    ["All"] + sorted(df["Region"].dropna().unique().tolist())
-) 
+        "Category",
+        ["All"] + sorted(df["Category"].dropna().unique().tolist())
+    )
+
+    selected_region = st.selectbox(
+        "Region",
+        ["All"] + sorted(df["Region"].dropna().unique().tolist())
+    )
+
     filtered_df = df.copy()
 
     if "Order Date" in filtered_df.columns:
