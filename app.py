@@ -292,7 +292,6 @@ else:
         st.info(
     f"🔎 Showing {len(df):,} records"
 )
-        )
 
         col1, col2 = st.columns(2)
 
