@@ -245,9 +245,6 @@ else:
 
         col1, col2 = st.columns(2)
     
-        with filter_col1:
-    search_product = st.text_input(
-
         with filter_col2:
             if "Category" in df.columns:
                 selected_category = st.selectbox(
