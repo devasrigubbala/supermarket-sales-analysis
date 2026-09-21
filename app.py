@@ -275,6 +275,10 @@ else:
                 value=df["Order Date"].max().date()
             )
     search_product = st.text_input("🔎 Search Product")
+    selected_category = st.selectbox(
+    "Category",
+    ["All"] + sorted(df["Category"].dropna().unique().tolist())
+)
     filtered_df = df.copy()
 
     if "Order Date" in filtered_df.columns:
