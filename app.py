@@ -248,80 +248,81 @@ if search_product:
             search_product, case=False, na=False
         )
     ]
-      # -------- QUICK ANALYSIS --------
+    # -------- QUICK ANALYSIS --------
 
-col1, col2 = st.columns(2)
+    col1, col2 = st.columns(2)
 
-# -------- DATE FILTER --------
+    # -------- DATE FILTER --------
 
-if "Order Date" in df.columns:
+    if "Order Date" in df.columns:
 
-            date_col1, date_col2 = st.columns(2)
+        date_col1, date_col2 = st.columns(2)
 
-            with date_col1:
-                start_date = st.date_input(
-                    "📅 Start Date",
-                    value=df["Order Date"].min().date()
-                )
-
-            with date_col2:
-                end_date = st.date_input(
-                    "📅 End Date",
-                    value=df["Order Date"].max().date()
-                )
-            filtered_df = df.copy()
-
-        # Apply Date Filter
-        if "Order Date" in filtered_df.columns:
-            filtered_df = filtered_df[
-                (filtered_df["Order Date"].dt.date >= start_date) &
-                (filtered_df["Order Date"].dt.date <= end_date)
-            ]   
-        if search_product:
-            filtered_df = filtered_df[
-                filtered_df["Product Name"]
-                .astype(str)
-                .str.contains(search_product, case=False, na=False)
-            ]
-
-        if selected_category != "All":
-            filtered_df = filtered_df[
-                filtered_df["Category"] == selected_category
-            ]
-
-        if selected_region != "All":
-            filtered_df = filtered_df[
-                filtered_df["Region"] == selected_region
-            ]
-
-        st.info(
-    f"🔎 Showing {len(df):,} records"
-)
-
-        col1, col2 = st.columns(2)
-
-        if "Category" in df.columns:
-
-            category_sales = (
-                df.groupby("Category")["Sales"]
-                .sum()
-                .sort_values(ascending=False)
+        with date_col1:
+            start_date = st.date_input(
+                "📅 Start Date",
+                value=df["Order Date"].min().date()
             )
 
-            with col1:
+        with date_col2:
+            end_date = st.date_input(
+                "📅 End Date",
+                value=df["Order Date"].max().date()
+            )
 
-                st.markdown(
-                    '<div class="section-title">📦 Category Sales</div>',
-                    unsafe_allow_html=True
-                )
+    filtered_df = df.copy()
 
-                fig, ax = plt.subplots(figsize=(7, 4))
+    if "Order Date" in filtered_df.columns:
+        filtered_df = filtered_df[
+            (filtered_df["Order Date"].dt.date >= start_date) &
+            (filtered_df["Order Date"].dt.date <= end_date)
+        ]
 
-                category_sales.plot(
-                    kind="bar",
-                    ax=ax
-                )
+    if search_product:
+        filtered_df = filtered_df[
+            filtered_df["Product Name"]
+            .astype(str)
+            .str.contains(search_product, case=False, na=False)
+        ]
 
+    if selected_category != "All":
+        filtered_df = filtered_df[
+            filtered_df["Category"] == selected_category
+        ]
+
+    if selected_region != "All":
+        filtered_df = filtered_df[
+            filtered_df["Region"] == selected_region
+        ]
+
+    st.info(
+        f"🔎 Showing {len(filtered_df):,} records"
+    )
+
+    col1, col2 = st.columns(2)
+
+    if "Category" in df.columns:
+
+        category_sales = (
+            df.groupby("Category")["Sales"]
+            .sum()
+            .sort_values(ascending=False)
+        )
+
+        with col1:
+
+            st.markdown(
+                '<div class="section-title">📦 Category Sales</div>',
+                unsafe_allow_html=True
+            )
+
+            fig, ax = plt.subplots(figsize=(7, 4))
+
+            category_sales.plot(
+                kind="bar",
+                ax=ax
+            )
+    
                 ax.set_ylabel("Sales")
                 ax.set_xlabel("Category")
                 ax.set_title("Sales by Category")
