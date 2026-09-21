@@ -212,7 +212,7 @@ else:
             """, unsafe_allow_html=True)
 
         # -------- QUICK ANALYSIS --------
-        # Filtered record count
+             # Filtered record count
         if search_product:
             display_df = df[
                 df["Product Name"]
