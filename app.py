@@ -248,7 +248,23 @@ else:
                 )
             else:
                 selected_region = "All"
+        # -------- DATE FILTER --------
 
+        if "Order Date" in df.columns:
+
+            date_col1, date_col2 = st.columns(2)
+
+            with date_col1:
+                start_date = st.date_input(
+                    "📅 Start Date",
+                    value=df["Order Date"].min().date()
+                )
+
+            with date_col2:
+                end_date = st.date_input(
+                    "📅 End Date",
+                    value=df["Order Date"].max().date()
+                )
         filtered_df = df.copy()
 
         if search_product:
