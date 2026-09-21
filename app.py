@@ -140,7 +140,7 @@ else:
     if "Postal Code" in df.columns:
         df["Postal Code"] = df["Postal Code"].fillna(0)
 
-    if "Order Date" in df.columns:
+   if "Order Date" in df.columns:
         df["Order Date"] = pd.to_datetime(
             df["Order Date"],
             format="mixed",
